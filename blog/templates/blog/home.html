@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load blog_extras %}
+
+{% block base %}
+<h2 class='bar-title'>Photos</h2>
+<div class="par-photos">
+{% for instance in blogs_photos %}
+    {% if instance.image %}
+        {% include 'blog/partials/photo_snippet.html' with photo=instance %}
+    {% elif instance.photo %}
+        {% include 'blog/partials/blog_snippet.html' with blog=instance %}
+    {% endif %}
+
+    {% endfor %}
+</div>
+
+<div class="navigation_block">
+    {% if blogs_photos.number != 1 %}
+    <div class="pre"><a href="?page=1">1</a></div>
+    {% endif %}
+    
+    {% if blogs_photos.has_previous %}
+    <div class="prec"><a href="?page={{blogs_photos.previous_page_number}}">-</a></div>
+    {% endif %}
+    
+    <div class="actu">{{blogs_photos.number}}</div>
+
+    {% if blogs_photos.has_next %}
+    <div class="suiv"><a href="?page={{blogs_photos.next_page_number}} ">+</a></div>
+    {% endif %}
+
+    {% if blogs_photos.paginator.num_pages != blogs_photos.number %}
+    <div class="der"><a href="?page={{blogs_photos.paginator.num_pages}}">{{blogs_photos.paginator.num_pages}}</a> </div>
+    {% endif %}
+</div>
+
+{% endblock base %}

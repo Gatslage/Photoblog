@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block base %}
+    <script src="{% static 'blog/script/photochange.js' %}"></script>
+    <div class='titre'>Changeons votre photo de profil {{user.username}}</div>
+    <div class='corps'>
+        <img src="{% static 'blog/cv.jpg' %}" alt="photo de profil" id='profil' srcset="" class='pp'>
+        <form method='POST' action='' class='myform' id='charge' enctype='multipart/form-data'>
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class='valid_but'>Enregistrer</button>
+        </form>
+    </div>
+    
+{% endblock base %}

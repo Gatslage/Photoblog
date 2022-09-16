@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block base %}
+ {% load static %}
+<div class='titre'>Charger une image</div>
+<div class="par-form">
+<form method='POST' action=''  enctype='multipart/form-data' class='myform'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <button  type="submit">Envoyer</button>
+</form>
+</div>
+<script src="{% static 'blog/script/elt-forms.js' %}"></script>
+{% endblock base %}

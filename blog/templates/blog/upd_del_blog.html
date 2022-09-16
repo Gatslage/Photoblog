@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block base %}
+<div class="titre">Modifier ce blog</div>
+
+<div class="par-form">
+    <form action="" enctype='' class='myform' method="post">
+        {% csrf_token %}
+        {{ upd_blog.as_p}}
+        <button type="submit">Enregistrer</button>
+    </form>
+
+</div>
+<div class="par-form">
+    <form action="" method="post" class='myform'>
+        {% csrf_token %}
+        {{del_blog}}
+        <button type="submit" class='but-danger'>Supprimer</button>
+    </form>
+
+</div>
+{% endblock base %}

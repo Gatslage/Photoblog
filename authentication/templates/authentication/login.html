@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block base %}
+<h1 class='titre'>Connexion</h1>
+{% if message %}
+<h3>{{message}}</h3>
+{% endif %}
+<form method='POST' action='' class='myform'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type='submit' class='boutP' >
+</form>
+    <p>Pas encore membre ? <a href="{% url 'register' %}">Inscrivez-vous maintenant !</a></p>
+{% endblock base %}

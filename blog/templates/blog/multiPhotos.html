@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block base %}
+
+<div class="titre">Charger plusieurs images</div>
+
+<div class="par-form">
+    <form action="" enctype='multipart/form-data' method="post">
+        {% csrf_token %}
+        {{forms.as_p}}
+        <button type="submit">Charger les images</button>
+    </form>
+</div>
+
+{% endblock base %}

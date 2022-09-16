@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block base %}
+<div class="titre">Creer un Billet</div>
+<div class="par-form">
+    <form action="" method="post" enctype='multipart/form-data' class="myform">
+        {% csrf_token %}
+        {{blogForm.as_p}}
+        {{photoForm.as_p}}
+        <button type="submit">Valider</button>
+    </form>
+</div>
+
+{% endblock base %}

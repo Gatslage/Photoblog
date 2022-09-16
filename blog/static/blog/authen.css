@@ -1,0 +1,17 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.contain{
+    display: flex;
+    flex-direction: row;
+    align-content: space-around;
+    margin-right: 15%;
+    margin-left:15%;
+}
+.titre{
+    background-color: rgb(151, 1, 1);
+    color: white;
+    text-align: center;
+    width: 90%;
+    
+}

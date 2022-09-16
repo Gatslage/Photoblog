@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full'%}
+{% bootstrap_messages %}
+<html lang="en">
+<head>
+    <script src="{% static 'blog/script/elt-forms.js' %}"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href={% static 'blog/principale.css' %}>
+    <title>photoblog</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <header>
+        <div></div>
+        <div><h1 class='site_title'>Photoblog</h1></div>
+        <div class='menu-header'><button class='deconnect'><a href="{% url 'logout' %}">Deconnexion</a></button></div>
+
+</header>  
+<nav class='profil'>
+    <div class="username profil-child">{{request.user}} </div>
+    {% if user.profil %}
+    <div class=" profil-child"><img src={{ user.profil.url}} alt="photo de profil" srcset="" class='pp'></div>
+    {% else %}
+    <div class=" profil-child"><img src="{% static 'blog/cv.jpg' %}" alt="photo de profil" srcset="" class='pp'></div>
+    {% endif %}
+
+    <div class="liens profil-child">
+        <div class="lien"> <a href="{% url 'home' %} ">Acceuil</a>   </div>
+        {% if perms.blog.add_blog %}
+        <div class="lien"> <a href="{% url 'createBlogPhoto' %} ">Creer un Billet</a>  </div>
+        {% endif %}
+        {% if perms.blog.add_photo %}
+        <div class="lien"> <a href="{% url 'upload_photo' %} ">Telecharger une image</a>  </div>
+        {% endif %}
+        <div class="lien"><a href=" {% url 'change_pp' %} "> Changer Photo de profil</a></div>
+        <div class="lien"> <a href="{% url 'changepasseword' %} "> Changer de mot de passe</a>
+        <div class="lien danger"> <a href="{% url 'logout' %} ">Deconnexion</a></div>
+
+    </div>
+</nav>  
+    {% endif %}
+    <div class="contenu">
+    {% block base %}
+    {% endblock base %}
+    </div>
+
+    
+</body>
+</html>
