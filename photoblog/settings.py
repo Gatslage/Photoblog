@@ -39,7 +39,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 django_heroku.settings(locals())
 # Generally avoid wildcards(*). However since Heroku router provides hostname validation it is ok
 if IS_HEROKU:
-    ALLOWED_HOSTS = ["*"]
+    ALLOWED_HOSTS = ["https://photoblogfusion.herokuapp.com/","127.0.0.1"]
 else:
     ALLOWED_HOSTS = []
 
@@ -48,7 +48,7 @@ if not IS_HEROKU:
     DEBUG = True
 
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL='authentication.User'
 # Application definition
